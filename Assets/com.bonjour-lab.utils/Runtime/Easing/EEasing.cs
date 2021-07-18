@@ -1,0 +1,37 @@
+using UnityEngine;
+
+namespace Bonjour.Maths
+{
+	public enum EEasing
+	{
+		LINEAR = 0,//EasingType.LINEAR,
+
+		INQUAD = 11,
+		OUTQUAD = 12,
+		INOUTQUAD = 1112,
+
+		INCUBIC = 21,
+		OUTCUBIC = 22,
+		INOUTCUBIC = 2122,
+
+		INQUARTIC = 31,
+		OUTQUARTIC = 32,
+		INOUTQUARTIC = 3132,
+
+		INQUINTIC = 41,
+		OUTQUINTIC = 42,
+		INOUTQUINTIC = 4142,
+
+		INSIN = 51,
+		OUTSIN = 52,
+		INOUTSIN = 5152,
+
+		INEXP = 61,
+		OUTEXP = 62,
+		INOUTEXP = 6162,
+
+		INCIRC = 71,
+		OUTCIRC = 72,
+		INOUTCIRC = 7172
+	}
+}
