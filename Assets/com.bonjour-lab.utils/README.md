@@ -19,7 +19,7 @@ To the scopedRegistries section:
 To the dependencies section:
 
 ```
-"com.bonjour-lab.utils": "0.0.2",
+"com.bonjour-lab.utils": "0.0.3",
 ```
 
 After changes, the manifest file should look like below:
@@ -35,7 +35,7 @@ After changes, the manifest file should look like below:
     }
   ],
   "dependencies": {
-    "com.bonjour-lab.utils": "0.0.2",
+    "com.bonjour-lab.utils": "0.0.3",
     ...
 ```
 
