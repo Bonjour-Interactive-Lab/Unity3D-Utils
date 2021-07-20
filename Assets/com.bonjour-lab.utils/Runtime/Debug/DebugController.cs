@@ -22,9 +22,13 @@ namespace Bonjour{
             }
         }
 
-        protected void UpdateDebugObjectsState(){
+        public void UpdateDebugObjectsState(){
+            UpdateDebugObjectsState(isShownAtStart);
+        }
+
+        public void UpdateDebugObjectsState(bool state){
             foreach(GameObject go in objectsToShowAtDebug){
-                go.SetActive(isShownAtStart);
+                go.SetActive(state);
             }       
         }
     }
