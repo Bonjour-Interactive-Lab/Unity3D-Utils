@@ -58,8 +58,17 @@ namespace Bonjour.Time{
 
         public void StopTimer(){
             if(start == true){
-                timerdata.normalizedTime = 1.1f;
+                ExtensionMethodHelper.Instance.StopCoroutine(Countdown());
+                start                       = false;
+                timerdata.normalizedTime    = 1;
+                timerdata.time              = timerdata.totalTime;
+                OnTimerEnd.Invoke(timerdata);
             }
+        }
+
+        public void ResetTimer(){
+            StopTimer();
+            StartTimer();
         }
 
         public void StartTimer() {
