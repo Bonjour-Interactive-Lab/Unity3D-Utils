@@ -1,3 +1,5 @@
+#include "../Utils/maths.hlsl"
+
 float2 opUnite(float2 d1, float2 d2){
     return (d1.x < d2.x) ? d1 : d2;
 }
@@ -52,4 +54,24 @@ float2 opSmoothIntersect(float2 d1, float2 d2, float k){
 
 float opSmoothIntersect(float d1, float d2, float k){
   return smax(d1, d2, k);
+}
+
+float opRound(float sdf, float r )
+{
+  return sdf - r;
+}
+
+float2 opRound(float2 sdf, float r)
+{
+  return float2(sdf.x - r, sdf.y);
+}
+
+float opOnion(float sdf, float r )
+{
+  return abs(sdf) - r;
+}
+
+float2 opOnion(float2 sdf, float r)
+{
+  return float2(abs(sdf.x) - r, sdf.y);
 }
