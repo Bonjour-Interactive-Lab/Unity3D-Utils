@@ -11,6 +11,7 @@ public class LoadParseJSON : MonoBehaviour
     private string pathToFile;
 
     private JObject config;
+    private string configAsAString;
 
     private void Awake(){
     }
@@ -25,11 +26,27 @@ public class LoadParseJSON : MonoBehaviour
         }
     }
 
+    public void LoadAsString(){
+        configAsAString = null;
+        pathToFile = Path.Combine(Application.streamingAssetsPath, configfile);
+        using (StreamReader stream = new StreamReader(pathToFile)) 
+	    {
+	        configAsAString = stream.ReadToEnd();
+        }
+    }
+
     public JObject GetConfig(){
         if(config == null){
             LoadJson();
         }
         return config;
+    }
+
+    public string GetConfigAsString(){
+        if(configAsAString == null){
+            LoadAsString();
+        }
+        return configAsAString;
     }
 
     public void SaveJSONConfig(JObject config){
