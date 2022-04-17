@@ -1,0 +1,7 @@
+{
+    "artifactPath": "www.anurl.com",
+    "title": "Hello World",
+    "description": "Simple jso attrib",
+    "tags": ["generative", "testing", "reallyNotInteresting"],
+    "attributes": [{}],
+  }
