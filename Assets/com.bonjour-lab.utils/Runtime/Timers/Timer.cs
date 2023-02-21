@@ -24,6 +24,7 @@ namespace Bonjour.Time{
         
 
         private bool start      = false;
+        private bool eventflag  = false;
 
         public Timer(string name, float totalTime){
             timerdata               = new TimerData();
@@ -37,13 +38,13 @@ namespace Bonjour.Time{
             // Debug.Log("Timer is Started");
             timerdata.normalizedTime  = 0;
             timerdata.time            = 0;
-            OnTimerStart.Invoke(timerdata);
+            if (eventflag) OnTimerStart.Invoke(timerdata);
 
             while(timerdata.normalizedTime <= 1f)
             {   
                 timerdata.normalizedTime  += UnityEngine.Time.deltaTime / timerdata.totalTime;
                 timerdata.time            += UnityEngine.Time.deltaTime;
-                OnTimerUpdated.Invoke(timerdata);
+                if(eventflag) OnTimerUpdated.Invoke(timerdata);
                 // Debug.Log(timerdata.normalizedTime+" :: "+timerdata.time);
                 yield return null;
             }
@@ -52,12 +53,13 @@ namespace Bonjour.Time{
             start       = false;
             timerdata.normalizedTime  = 1;
             timerdata.time            = timerdata.totalTime;
-            OnTimerEnd.Invoke(timerdata);
+            if (eventflag) OnTimerEnd.Invoke(timerdata);
             // Debug.Log("Timer is Finished");
         }
 
         public void StopTimer(){
             if(start == true){
+                eventflag = false;
                 ExtensionMethodHelper.Instance.StopCoroutine(Countdown());
                 start                       = false;
                 timerdata.normalizedTime    = 1;
@@ -73,6 +75,7 @@ namespace Bonjour.Time{
 
         public void StartTimer() {
             if(start != true){
+                eventflag = true;
                 ExtensionMethodHelper.Instance.StartCoroutine(Countdown());
             }
         }
